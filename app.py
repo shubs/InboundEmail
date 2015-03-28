@@ -17,7 +17,7 @@ def listingInbounds():
     return "list of inbounds"
 
 def parse():
-    app.logger.debug(request)
+    dump(request)
     return "thx"
 
 if __name__ == "__main__":
