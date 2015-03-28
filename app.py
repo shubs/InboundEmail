@@ -17,7 +17,8 @@ def listingInbounds():
     return "list of inbounds"
 
 def parse():
-    return request.form
+    app.logger.debug(request)
+    return "thx"
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
