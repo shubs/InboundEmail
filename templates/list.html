@@ -1,8 +1,14 @@
 {% extends "base.html" %}
-{% block content %}
-	<h1>{{ mainText }}!</h1>
+{% block list %}
 
 	{% for d in data %}
-	<div class=flash>{{ d }}</div> <br>
+	
+          <a class="item">
+            <div class="left floated ui star rating">
+              <i class="icon"></i>
+            </div>
+            <div class="right floated date">{{ d.Date }}</div>
+            <div class="description">{{ d.From }}</div>
+          </a>
 	{% endfor %}
 {% endblock %}
