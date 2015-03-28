@@ -1,1 +1,1 @@
-web: python parseAPI.py
+web: python app.py
