@@ -1,9 +1,8 @@
-<html>
-  <head>
-    <title>{{ title }}</title>
-  </head>
-  <body>
-      <h1>{{ mainText }}!</h1>
-      <pre>{{ data }}</pre>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{ mainText }}!</h1>
+
+	{% for d in data %}
+	<div class=flash>{{ d }}</div> <br>
+	{% endfor %}
+{% endblock %}
