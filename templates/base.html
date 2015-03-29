@@ -19,6 +19,7 @@
   <script type="text/javascript">
   $( document ).ready(function() {
     $("#1.content").addClass("active");
+    $("#1.mailSubject").addClass("active");
 
     activeChange(1);
     activeChangeForType(1, "text");
@@ -30,7 +31,9 @@
 
     function activeChange(id){
       $("div.content").removeClass("active");
+      $("a.mailSubject").removeClass("active");
       $("div#"+id+".content").addClass("active");
+      $("a#"+id+".mailSubject").addClass("active");
       showAndHide("content");
     }
 
