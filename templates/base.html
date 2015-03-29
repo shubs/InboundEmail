@@ -16,148 +16,88 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
   <script src="/static/semantic.min.js"></script>
 
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $("#1.content").addClass("active");
+
+    activeChange(1);
+    activeChangeForType(1, "text");
+
+    function showAndHide(whatToToggle){
+      $("."+whatToToggle).hide();
+      $("."+whatToToggle+".active").show();
+    }
+
+    function activeChange(id){
+      $("div.content").removeClass("active");
+      $("div#"+id+".content").addClass("active");
+      showAndHide("content");
+    }
+
+    function activeChangeForType(id, type){
+      $(".mail").removeClass("active");
+      $("."+type).addClass("active");
+      showAndHide("mail");
+    }
+
+    $("a.mailSubject").click(function(){
+      activeID = $(this).attr("id");
+      activeChange(activeID);
+    });
+
+    $("#htmlActivation").click(function(){
+      $("#textActivation").removeClass('active');
+      $(this).addClass('active');
+
+      activeID = $("div.content.active").attr("id");
+      type = "html";
+      activeChangeForType(activeID, type);
+    });
+
+    $("#textActivation").click(function(){
+      $("#htmlActivation").removeClass('active');
+      $(this).addClass('active');
+
+      activeID = $("div.content.active").attr("id");
+      type = "text";
+      activeChangeForType(activeID, type);
+    });
+  });
+  </script>
+
 
   <link rel="stylesheet" type="text/css" href="/static/feed.css">
   <script src="/static/feed.js"></script>
 </head>
 <body id="feed">
-  <div class="ui large inverted vertical sidebar menu">
-    <a class="active item">
-      Dogs Weekly <span class="ui label">213</span>
-    </a>
-    <a class="item">
-      Joystiq <span class="ui label">113</span>
-    </a>
-    <div class="item">
-      <b>Archived Feeds</b>
-      <div class="menu">
-        <a class="item">
-          Engadget <span class="ui label">11</span>
-        </a>
-        <a class="item">
-          NY Times Tech Blog <span class="ui label">21</span>
-        </a>
-      </div>
-    </div>
-    <a class="item">
-      <i class="bookmark icon"></i> Favorites
-    </a>
-    <div class="ui dropdown item">
-      <i class="add icon"></i> New
-      <div class="menu">
-        <a class="item"><i class="rss icon"></i> Feed</a>
-        <a class="item"><i class="tag icon"></i> Tag</a>
-        <a class="item"><i class="folder icon"></i> Group</a>
-      </div>
-    </div>
-  </div>
   <div class="ui divided two column padded grid">
     <div class="left column">
-      <div class="ui left floated launch icon button">
-        <i class="sidebar icon"></i>
-      </div>
-      <div class="ui right floated launch primary button">
-        <i class="mail icon"></i> Compose
-      </div>
-      <div class="ui secondary pointing filter menu">
-        <a class="active red item" data-tab="unread">Unread</a>
-        <a class="blue item" data-tab="saved">Saved</a>
-        <a class="green item" data-tab="all">All</a>
-      </div>
+      <h1 class="ui header" style="text-align:center"><i class="inbox icon"></i> {{ mainText }}</h1><br>
+      {% block list %}
+      {% endblock %}
 
-      <div class="ui active tab" data-tab="unread">
-        <div class="ui very relaxed divided link list">
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 14, 2013</div>
-            <div class="description">Scientists discover new breed of dog</div>
-          </a>
-
-          {% block list %}
-          {% endblock %}
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 07, 2013</div>
-            <div class="description">Top 10 Things to Know about Labradoodles</div>
-          </a>
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 05, 2013</div>
-            <div class="description">Study shows children enjoy the company of animals</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="ui tab" data-tab="saved">
-        <div class="ui very relaxed divided link list">
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 14, 2013</div>
-            <div class="description">Your favorite saved article</div>
-          </a>
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 14, 2013</div>
-            <div class="description">Your favorite saved article</div>
-          </a>
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="icon"></i>
-            </div>
-            <div class="right floated date">Sep 14, 2013</div>
-            <div class="description">Your favorite saved article</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="ui tab" data-tab="all">
-        <div class="ui very relaxed divided link list">
-          <a class="item">
-            <div class="left floated ui star rating">
-              <i class="link icon"></i>
-            </div>
-            <div class="right floated date">Sep 14, 2013</div>
-            <div class="description">There turns out there is only one article under all.</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="ui divider"></div>
-
-      <div class="current">Showing <b>6</b> of 213</div>
-
-      <div class="ui text menu">
-        <a class="icon item"><i class="icon left chevron"></i></a>
-        <a class="active item">1</a>
-        <div class="disabled item">...</div>
-        <a class="item">10</a>
-        <a class="item">11</a>
-        <a class="item">12</a>
-        <a class="icon item"><i class="icon right chevron"></i></a>
-      </div>
+     
     </div>
     <div class="right column">
-      <h1 class="ui header">{{ mainText }}</h1>
 
-      <a class="ui label">Unread</a>
-      <a class="ui label">Comics</a>
+      <div class="ui secondary pointing menu">
+        <a class="item" id="htmlActivation">
+          <i class="html5 icon"></i> HTML
+        </a>
+        <a class="active item" id="textActivation">
+          <i class="file text outline icon"></i> Text
+        </a>
+        <div class="right menu">
+         
+          <a class="ui tiny red button">
+            Delete
+          </a>
+        </div>
+      </div>
 
-      <div class="ui divider"></div>
       {% block content %}
       {% endblock %}
       <div class="ui divider"></div>
-      <div class="ui basic button">Save</div>
-      <div class="ui basic button">Delete</div>
     </div>
   </div>
 </body>

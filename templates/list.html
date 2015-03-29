@@ -1,14 +1,60 @@
 {% extends "base.html" %}
 {% block list %}
 
-	{% for d in data %}
+        <div class="ui very relaxed divided link list">
+
+
+		{% for d in data %}
 	
-          <a class="item">
+          <a class="item mailSubject" id="{{ loop.index }}">
             <div class="left floated ui star rating">
               <i class="icon"></i>
             </div>
-            <div class="right floated date">{{ d.Date }}</div>
-            <div class="description">{{ d.From }}</div>
+            <div class="right floated date">{{ d.Headers.Date }}</div>
+            <div class="description">{{ d.Subject }}</div>
           </a>
-	{% endfor %}
+		{% endfor %}
+        </div>
+
+      <div class="ui divider"></div>
+
+      <div class="current">Total : <b>{{ length }}</b></div>
+{% endblock %}
+{% block content %}
+
+		{% for d in data %}
+		<div class="content" id="{{ loop.index }}" style="display:none;">
+		<table class="ui very compact table">
+	      <tbody>
+	        <tr>
+	          <td>From</td>
+	          <td><a class="ui image label">
+	        <img src="http://semantic-ui.com/images/demo/avatar3.jpg">
+	        {{d.From}}
+	        </a></td>
+	        </tr>
+	        <tr>
+	          <td>To</td>
+	          <td><a class="ui image label">
+	        <img src="http://semantic-ui.com/images/demo/avatar3.jpg">
+	        {{d.Recipient}}
+	        </a></td>
+	        </tr>
+	        <tr>
+	          <td>Subject</td>
+	          <td>{{d.Subject}}</td>
+	        </tr>
+	        <tr>
+	          <td>Date</td>
+	          <td>{{d.Headers.Date}}</td>
+	        </tr>
+	      </tbody>
+	    </table>
+		
+
+      	<div class="ui divider"></div>
+		<div class="mail text" id="{{ loop.index }}" style="display:none">{{ d['Text-part'] }}</div>
+		<div class="mail html" id="{{ loop.index }}" style="display:none">{{ d['Html-part']|safe}}</div>
+		</div>
+		{% endfor %}
 {% endblock %}

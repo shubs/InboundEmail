@@ -31,8 +31,9 @@ def inbound():
         data = listingInbounds()
         return render_template('list.html',
                                 title='Inbound',
-                                mainText='list of mail recieved on this url',
-                                data=data)
+                                mainText='List of emails on the parse API',
+                                data=data,
+                                length=len(data))
 
 def listingInbounds():
     dico = firebase.get('/mails', None)
