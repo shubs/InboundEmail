@@ -7,16 +7,20 @@ from firebase import firebase
 firebase = firebase.FirebaseApplication('https://parseapi.firebaseio.com/', None)
 app = Flask(__name__)
 
+def fwdPost(data):
+    return data
+
+#this function just convert a dict in list for beter template handling
 def dictolist(dico):
     l = []
     for key in dico:
         l.append(dico[key]);
     return l
 
+# No real use
 @app.route("/")
 def hello():
-    return render_template('index.html',
-                           title='Home')
+    return render_template('index.html')
 
 @app.route("/inbound/", methods=['GET', 'POST'])
 def inbound():
@@ -27,7 +31,7 @@ def inbound():
                                 requestData=request,
                                 mainText='Got it !',
                                 data=data)
-    else:
+    elif request.method == 'GET':
         data = listingInbounds()
         return render_template('list.html',
                                 title='Inbound',
@@ -42,7 +46,6 @@ def listingInbounds():
 
 def parse(data):
     pusableData = data
-    #pusableData.add('time', time.strftime("%c"))
     snapshot = firebase.post('/mails', pusableData)
     return pusableData
 
