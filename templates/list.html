@@ -53,7 +53,7 @@
 		
 
       	<div class="ui divider"></div>
-		<div class="mail text" id="{{ loop.index }}" style="display:none">{{ d['Text-part'] }}</div>
+		<div class="mail text" id="{{ loop.index }}" style="display:none"><pre>{{ d['Text-part'] }}</pre></div>
 		<div class="mail html" id="{{ loop.index }}" style="display:none">{{ d['Html-part']|safe}}</div>
 		</div>
 		{% endfor %}

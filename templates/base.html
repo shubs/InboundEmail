@@ -9,7 +9,7 @@
   <!-- Site Properities -->
   <title>{{ title }}</title>
 
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/static/semantic.min.css">
 
   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -21,7 +21,7 @@
     $("#1.mailSubject").addClass("active");
 
     activeChange(1);
-    activeChangeForType(1, "text");
+    activeChangeForType(1, "html");
 
     function showAndHide(whatToToggle){
       $("."+whatToToggle).hide();
@@ -83,10 +83,10 @@
     <div class="right column">
 
       <div class="ui secondary pointing menu">
-        <a class="item" id="htmlActivation">
+        <a class="active item" id="htmlActivation">
           <i class="html5 icon"></i> HTML
         </a>
-        <a class="active item" id="textActivation">
+        <a class="item" id="textActivation">
           <i class="file text outline icon"></i> Text
         </a>
         <div class="right menu">
