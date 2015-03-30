@@ -1,5 +1,6 @@
 # InboundEmail
 This is a project to handle automatically inbound email using mailjet API
+```
 
 
 				GetResults
@@ -20,6 +21,7 @@ This is a project to handle automatically inbound email using mailjet API
 					|v
 				GET(MAILlist)
 
+```
 # Game server
 
 @GET /
