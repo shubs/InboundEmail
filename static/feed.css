@@ -2,13 +2,6 @@
             Global
 *******************************/
 
-/*-------------------
-        Sidebar
---------------------*/
-
-#feed .sidebar {
-  overflow: visible;
-}
 
 /*-------------------
         Grid
@@ -34,13 +27,10 @@
 
 #feed .current {
   float: right;
-  margin: 0.5em 0em 0em 1em;
 }
 
 #feed .left.column {
   background-color: #FCFCFC;
-  padding: 1em 2em;
-  max-width: 600px;
 }
 #feed .left.column .menu {
   margin-top: 5rem;
@@ -53,7 +43,6 @@
 
 #feed .right.column {
   font-size: 16px;
-  max-width: 800px;
 }
 
 /*******************************
