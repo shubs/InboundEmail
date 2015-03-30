@@ -14,6 +14,7 @@ def fwdPost(data):
 def dictolist(dico):
     l = []
     for key in dico:
+        dico[key]['id'] = key;
         l.append(dico[key]);
     return l
 

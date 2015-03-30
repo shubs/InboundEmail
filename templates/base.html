@@ -13,60 +13,9 @@
   <link rel="stylesheet" type="text/css" href="/static/semantic.min.css">
 
   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
   <script src="/static/semantic.min.js"></script>
-
-  <script type="text/javascript">
-  $( document ).ready(function() {
-    $("#1.content").addClass("active");
-    $("#1.mailSubject").addClass("active");
-
-    activeChange(1);
-    activeChangeForType(1, "html");
-
-    function showAndHide(whatToToggle){
-      $("."+whatToToggle).hide();
-      $("."+whatToToggle+".active").show();
-    }
-
-    function activeChange(id){
-      $("div.content").removeClass("active");
-      $("a.mailSubject").removeClass("active");
-      $("div#"+id+".content").addClass("active");
-      $("a#"+id+".mailSubject").addClass("active");
-      showAndHide("content");
-    }
-
-    function activeChangeForType(id, type){
-      $(".mail").removeClass("active");
-      $("."+type).addClass("active");
-      showAndHide("mail");
-    }
-
-    $("a.mailSubject").click(function(){
-      activeID = $(this).attr("id");
-      activeChange(activeID);
-    });
-
-    $("#htmlActivation").click(function(){
-      $("#textActivation").removeClass('active');
-      $(this).addClass('active');
-
-      activeID = $("div.content.active").attr("id");
-      type = "html";
-      activeChangeForType(activeID, type);
-    });
-
-    $("#textActivation").click(function(){
-      $("#htmlActivation").removeClass('active');
-      $(this).addClass('active');
-
-      activeID = $("div.content.active").attr("id");
-      type = "text";
-      activeChangeForType(activeID, type);
-    });
-  });
-  </script>
-
+  <script src="/static/main.js"></script>
 
   <link rel="stylesheet" type="text/css" href="/static/feed.css">
   <script src="/static/feed.js"></script>
@@ -91,7 +40,7 @@
         </a>
         <div class="right menu">
          
-          <a class="ui tiny red button">
+          <a class="ui tiny red button" id="delete">
             Delete
           </a>
         </div>
